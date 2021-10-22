@@ -2,7 +2,9 @@
 const { validationResult } = require("express-validator");
 const user = require("../model/user_model");
 
-
+//path - api/user/login
+//type - post 
+//requirements - password, email
 login = async (req, res) => {
     //input validation checking
     const errors = validationResult(req);
@@ -29,6 +31,10 @@ login = async (req, res) => {
     }
 }
 
+
+//path - api/user/signUp
+//type - post 
+//requirements - name, password, email
 signUp = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

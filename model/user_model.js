@@ -1,4 +1,6 @@
 const db = require("mongoose");
+
+//schema for user data in mongodb
 const userSchema = new db.Schema({
     "name": {
         type: String,
