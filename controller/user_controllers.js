@@ -5,7 +5,7 @@ const user = require("../model/user_model");
 //path - api/user/login
 //type - post 
 //requirements - password, email
-login = async (req, res) => {
+signIn = async (req, res) => {
     //input validation checking
     const errors = validationResult(req);
     if (errors.isEmpty()) {
@@ -23,7 +23,7 @@ login = async (req, res) => {
                 res.status(401).json({ message: "User not found" });
             }
         } catch (err) {
-            res.status(500).json({ message: "An internal error has occured", error: err });
+            res.status(500).json({ message: "An internal error has occurred", error: err });
         }
     }
     else {
@@ -66,4 +66,4 @@ signUp = async (req, res) => {
 
 //exporting route functions
 exports.signUp = signUp;
-exports.login = login;
+exports.signIn = signIn;
