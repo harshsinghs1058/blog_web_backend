@@ -29,7 +29,7 @@ app.use("/api/blog", blogRoutes);
 //temporary routes
 app.get("/", (req, res) => {
   console.log("/");
-  res.status(404).json({ message: "API route not found" });
+  res.json({ message: "Hello world" });
 });
 
 //staring server
