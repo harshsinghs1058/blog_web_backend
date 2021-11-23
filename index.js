@@ -1,8 +1,9 @@
 //importing dependencies
 const express = require("express");
 const userRoutes = require("./routes/user_routes");
+const blogRoutes = require("./routes/blog_routes");
 const db = require("mongoose");
-require('dotenv').config();
+require("dotenv").config();
 const cors = require("cors");
 
 //
@@ -14,22 +15,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 //data base initializing work
-db.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).catch((error) => {
-    console.log(error);
-})
-
+db.connect(process.env.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).catch((error) => {
+  console.log(error);
+});
 
 //adding routes
 app.use("/api/user", userRoutes);
-
+app.use("/api/blog", blogRoutes);
 
 //temporary routes
 app.get("/", (req, res) => {
-    console.log("/");
-    res.send("hello world");
+  console.log("/");
+  res.status(404).json({ message: "API route not found" });
 });
 
 //staring server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
